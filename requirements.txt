@@ -1,0 +1,23 @@
+asgiref==3.3.4; python_version >= "3.6"
+django==3.2.4; python_version >= "3.6"
+djangorestframework==3.12.4; python_version >= "3.5"
+pytz==2021.1; python_version >= "3.6"
+sqlparse==0.4.1; python_version >= "3.6"
+
+
+  
+def left_join(HM1, HM2):
+    output = []
+    for i in HM1:
+        temp = None
+        if i in HM2:
+            temp = HM2[i]
+            del HM2[i]
+        output = output + [[i,HM1[i],temp]]
+    for j in HM2:
+        output = output + [[j,None,HM2[j]]]
+    return output
+if __name__ == '__main__':
+    dic = {'name':'1', 'd':'16', 'kine':'3', 'd':'4'}
+    dic2 = {'name':'5', 'd':'2', 'color':'6', 'f':'4'}
+    print(left_join(dic, dic2))
